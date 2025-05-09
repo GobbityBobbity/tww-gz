@@ -46,6 +46,7 @@ void main() {
     g_drawListener->addListener(GZ_frameCounter);
     g_drawListener->addListener(GZ_displayStageInfo);
     g_drawListener->addListener(GZ_displayZombieHoverInfo);
+    g_drawListener->addListener(GZ_displayRollClipTrainerInfo);
     g_drawListener->addListener(GZ_displaySplash);
     g_drawListener->addListener(GZ_drawWatches);
 
@@ -123,4 +124,5 @@ KEEP_FUNC void GZ_PosSettings_initDefaults() {
     GZStng_add(STNG_SPRITES_TIME_DISP, new Vec2{450.0f, 315.f}, sizeof(Vec2));
     GZStng_add(STNG_SPRITES_ZH_INFO, new Vec2{585.0f, 395.f}, sizeof(Vec2));
     GZStng_add(STNG_SPRITES_STAGE_INFO, new Vec2{425.0f, 30.f}, sizeof(Vec2));
+    GZStng_add(STNG_SPRITES_ROLL_CLIP_TRAINER, new Vec2{225.0f, 365.f}, sizeof(Vec2));
 }

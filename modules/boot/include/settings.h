@@ -113,6 +113,9 @@ enum GZSettingID : uint32_t {
     // TODO
 
     // New Adds
+    STNG_TOOLS_ROLL_CLIP_TRAINER,
+    STNG_SPRITES_ROLL_CLIP_TRAINER,
+
 };
 
 struct GZSettingEntry {

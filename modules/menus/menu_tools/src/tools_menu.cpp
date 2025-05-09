@@ -63,7 +63,9 @@ KEEP_FUNC ToolsMenu::ToolsMenu(Cursor& cursor)
                           {"intro skip", INTRO_SKIP_INDEX, "Skips the intro cutscenes when starting a new file", true,
                            []() { return GZStng_getData(STNG_TOOLS_INTRO_SKIP, false); }},
                           {"room reload/void out", VOID_INDEX, "Reload room by void out by pressing L + R + B + Start",
-                           true, []() { return GZStng_getData(STNG_TOOLS_VOID, false); }}} {}
+                           true, []() { return GZStng_getData(STNG_TOOLS_VOID, false); }},
+                          {"roll clip trainer", ROLL_CLIP_TRAINER_INDEX, "Train roll clip timing with a OSD",
+                           true, []() { return GZStng_getData(STNG_TOOLS_ROLL_CLIP_TRAINER, false); }}} {}
 
 ToolsMenu::~ToolsMenu() {}
 
@@ -71,7 +73,7 @@ GZSettingID l_mapping[] = {
     STNG_TOOLS_DEBUG,           STNG_TOOLS_TIME_DISP,     STNG_TOOLS_STAGE_INFO,  STNG_TOOLS_TELEPORT,
     STNG_TOOLS_AREA_RELOAD,     STNG_TOOLS_MAP_SELECT,    STNG_TOOLS_ZH,          STNG_TOOLS_INPUT_VIEWER,
     STNG_TOOLS_FRAME_COUNT,     STNG_TOOLS_FRAME_ADVANCE, STNG_TOOLS_ESS_CHECKER, STNG_TOOLS_DEADZONE_CHECKER,
-    STNG_TOOLS_DISABLE_SVCHECK, STNG_TOOLS_INTRO_SKIP,    STNG_TOOLS_VOID,
+    STNG_TOOLS_DISABLE_SVCHECK, STNG_TOOLS_INTRO_SKIP,    STNG_TOOLS_VOID,        STNG_TOOLS_ROLL_CLIP_TRAINER,
 };
 
 void ToolsMenu::draw() {

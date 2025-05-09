@@ -20,7 +20,8 @@ KEEP_FUNC PosSettingsMenu::PosSettingsMenu(Cursor& cursor, PosSettingsData& data
             {"input viewer", SpritesIndex::SPR_VIEWER_INDEX, "Change input viewer position", false},
             {"frame timer", SpritesIndex::SPR_COUNT_INDEX, "Change frame timer position", false},
             {"zombie hover info", SpritesIndex::SPR_ZH_INFO_INDEX, "Change zombie hover info position", false},
-            {"stage info", SpritesIndex::SPR_SPRITES_STAGE_INFO_INDEX, "Change stage info position", false}} {}
+            {"stage info", SpritesIndex::SPR_SPRITES_STAGE_INFO_INDEX, "Change stage info position", false},
+            {"roll clip trainer", SpritesIndex::SPR_ROLL_CLIP_TRAINER_INDEX, "Change roll clip trainer position", false}} {}
 
 PosSettingsMenu::~PosSettingsMenu() {}
 
@@ -37,6 +38,7 @@ void drawCursor(Vec2 pos) {
 GZSettingID l_mapping[] = {
     STNG_SPRITES_MENU,   STNG_SPRITES_FIFO,  STNG_SPRITES_DEBUG_INFO, STNG_SPRITES_TIME_DISP,
     STNG_SPRITES_VIEWER, STNG_SPRITES_COUNT, STNG_SPRITES_ZH_INFO,    STNG_SPRITES_STAGE_INFO,
+    STNG_SPRITES_ROLL_CLIP_TRAINER,
 };
 
 void PosSettingsMenu::draw() {

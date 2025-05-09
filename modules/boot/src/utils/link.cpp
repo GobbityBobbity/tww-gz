@@ -224,3 +224,55 @@ KEEP_FUNC void GZ_displayStageInfo() {
                          GZ_checkDropShadows());
     }
 }
+
+KEEP_FUNC void GZ_displayRollClipTrainerInfo(){
+
+    if (!GZStng_getData(STNG_TOOLS_ROLL_CLIP_TRAINER, false)) {
+        return;
+    }
+
+    daPy_lk_c* player_p = (daPy_lk_c*)dComIfGp_getPlayer(0);
+    static int8_t rollClipFrameCount = -31;
+    static int8_t rollClipFrame = 0;
+    static int8_t rollClipFrameBuffer = 0;
+    char roll_clip_str[20];
+    bool isClimbing = false;
+    //bool isWalking = false;
+    //bool isRolling = false;
+
+    isClimbing = (player_p->mCurProcID == daPy_lk_c::PROC_HANG_CLIMB_e);
+    //isWalking = (player_p->mCurProcID == daPy_lk_c::PROC_MOVE_e);
+    //isRolling = (player_p->mCurProcID == daPy_lk_c::PROC_FRONT_ROLL_e);
+
+    if (GZ_getButtonTrig(GZPad::A) && (isClimbing || (rollClipFrameCount >= 0 && rollClipFrameCount < 5))) {
+        rollClipFrame = rollClipFrameCount;
+        if (g_FrameAdvEnabled){
+            rollClipFrame = rollClipFrameCount;
+        }
+    }
+
+    if (player_p->mCurProcID == daPy_lk_c::PROC_HANG_START_e || player_p->mCurProcID == daPy_lk_c::PROC_HANG_FALL_START_e) {
+        rollClipFrameCount = -31;
+    }
+    else if (GZStng_getData(STNG_TOOLS_ROLL_CLIP_TRAINER, false) && !g_FrameAdvEnabled && (isClimbing || (rollClipFrameCount >= 0 && rollClipFrameCount < 5))) {
+        rollClipFrameCount++;
+    }
+    else if (g_FrameTriggered && (isClimbing || (rollClipFrameCount >= 0 && rollClipFrameCount < 5))) {
+        rollClipFrameCount++;
+    }
+
+
+    if (GZStng_getData(STNG_TOOLS_ROLL_CLIP_TRAINER, false)){
+        if (!g_FrameAdvEnabled) {
+            sprintf(roll_clip_str, "Roll Clip Timing: %d", rollClipFrame);
+            Vec2 roll_clip_info_offset = GZ_getSpriteOffset(STNG_SPRITES_ROLL_CLIP_TRAINER);
+            Font::GZ_drawStr(roll_clip_str, roll_clip_info_offset.x, roll_clip_info_offset.y, ColorPalette::GREEN, GZ_checkDropShadows());
+        } else {
+            rollClipFrameBuffer = rollClipFrame + 2;
+            sprintf(roll_clip_str, "Roll Clip Timing: %d", rollClipFrameBuffer);
+            Vec2 roll_clip_info_offset = GZ_getSpriteOffset(STNG_SPRITES_ROLL_CLIP_TRAINER);
+            Font::GZ_drawStr(roll_clip_str, roll_clip_info_offset.x, roll_clip_info_offset.y, ColorPalette::GREEN, GZ_checkDropShadows());
+        
+        }    
+    }
+}
